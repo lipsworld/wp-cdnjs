@@ -3,8 +3,8 @@ Contributors: mindshare, geetjacobs, patkirts
 Donate link: http://mind.sh/are/donate/
 Tags: cdnjs, cloudflare, js, css, scripts, cdn, libraries
 Requires at least: 3.8
-Tested up to: 3.9.1
-Stable tag: 0.1.1
+Tested up to: 3.9.2
+Stable tag: 0.1.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -58,6 +58,9 @@ function my_cdnjs_allow_in_admin() {
 2. wp-cdnjs settings page
 
 == Changelog ==
+
+= 0.1.2 =
+* Bugfix for header / footer setting being reversed
 
 = 0.1.1 =
 * Added .pot file for translation

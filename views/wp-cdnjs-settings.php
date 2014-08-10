@@ -87,8 +87,8 @@ function cdn_field() {
 				</td>
 				<td class="wp-cdnjs_location">
 					<select name="cdnjs[cdnjs_settings_scripts][<?php echo $key; ?>][location]">
-						<option value="0" <?php echo(($value['location'] == 0) ? ' selected="selected"' : ''); ?>><?php _e('Footer', 'wp-cdnjs'); ?></option>
-						<option value="1" <?php echo(($value['location'] == 1) ? ' selected="selected"' : ''); ?>><?php _e('Header', 'wp-cdnjs'); ?></option>
+						<option value="1" <?php echo(($value['location'] == 1) ? ' selected="selected"' : ''); ?>><?php _e('Footer', 'wp-cdnjs'); ?></option>
+						<option value="0" <?php echo(($value['location'] == 0) ? ' selected="selected"' : ''); ?>><?php _e('Header', 'wp-cdnjs'); ?></option>
 					</select>
 				</td>
 				<td class="wp-cdnjs_enable">

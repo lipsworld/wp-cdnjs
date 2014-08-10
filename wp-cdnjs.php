@@ -3,7 +3,7 @@
 Plugin Name: WP cdnjs
 Plugin URI: http://wordpress.org/plugins/wp-cdnjs/
 Description: Effortlessly include any CSS or JavaScript Library hosted at cdnjs.com on your WordPress site.
-Version: 0.1.1
+Version: 0.1.2
 Author: Mindshare Labs / ANAGR.AM
 Author URI: https://mindsharelabs.com/
 License: GNU General Public License
