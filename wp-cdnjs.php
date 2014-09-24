@@ -3,7 +3,7 @@
 Plugin Name: WP cdnjs
 Plugin URI: http://wordpress.org/plugins/wp-cdnjs/
 Description: Effortlessly include any CSS or JavaScript Library hosted at cdnjs.com on your WordPress site.
-Version: 0.1.2
+Version: 0.1.3
 Author: Mindshare Labs / ANAGR.AM
 Author URI: https://mindsharelabs.com/
 License: GNU General Public License
@@ -80,10 +80,9 @@ if(version_compare($wp_version, WP_CDNJS_MIN_WP_VERSION, "<")) {
 	exit(WP_CDNJS_PLUGIN_NAME.' requires WordPress '.WP_CDNJS_MIN_WP_VERSION.' or newer.');
 }
 
-if(!class_exists('WP_CDNJS')) :
-	/**
-	 * Class wp_cdnjs
-	 */
+if(!class_exists('WP_CDNJS')) : /**
+ * Class wp_cdnjs
+ */ {
 	class wp_cdnjs {
 
 		/**
@@ -97,13 +96,6 @@ if(!class_exists('WP_CDNJS')) :
 		 * @var string
 		 */
 		private $cdnjs_uri = '//cdnjs.cloudflare.com/ajax/libs/';
-
-		/**
-		 * Version of jQuery to use for the admin screens.
-		 *
-		 * @var string
-		 */
-		private $jquery_version = '1.10.4';
 
 		/**
 		 * Version of Select2 to use for the admin screens.
@@ -279,6 +271,7 @@ if(!class_exists('WP_CDNJS')) :
 		 */
 		public function get_option_group($settings_file) {
 			$option_group = preg_replace("/[^a-z0-9]+/i", "", basename($settings_file, '.php'));
+
 			return $option_group;
 		}
 
@@ -307,6 +300,7 @@ if(!class_exists('WP_CDNJS')) :
 			if(isset($options[$option_group.'_'.$section_id.'_'.$field_id])) {
 				return $options[$option_group.'_'.$section_id.'_'.$field_id];
 			}
+
 			return FALSE;
 		}
 
@@ -332,8 +326,10 @@ if(!class_exists('WP_CDNJS')) :
 			$options = get_option($option_group);
 			if(isset($options[$option_group.'_'.$section_id.'_'.$field_id])) {
 				$options[$option_group.'_'.$section_id.'_'.$field_id] = NULL;
+
 				return update_option($option_group, $options);
 			}
+
 			return FALSE;
 		}
 
@@ -351,6 +347,7 @@ if(!class_exists('WP_CDNJS')) :
 				$settings_link = '<a href="options-general.php?page='.WP_CDNJS_PLUGIN_SLUG.'" title="'.__(WP_CDNJS_PLUGIN_NAME, 'wp-cdnjs').'">'.__('Settings', 'wp-cdnjs').'</a>';
 				array_unshift($links, $settings_link);
 			}
+
 			return $links;
 		}
 
@@ -360,7 +357,8 @@ if(!class_exists('WP_CDNJS')) :
 		public function register_admin_scripts() {
 			// @todo make function for enqueueing CDNJS stuff and use that here instead
 			wp_enqueue_script('cdnjs-select2', $this->cdnjs_uri.'select2/'.$this->select2_version.'/select2.min.js', array('jquery'));
-			wp_enqueue_script('jquery-ui', $this->cdnjs_uri.'jqueryui/'.$this->jquery_version.'/jquery-ui.min.js');
+			wp_enqueue_script('jquery-ui-sortable');
+			//wp_enqueue_script('jquery-ui-core');
 
 			wp_register_script('wp-cdnjs', WP_CDNJS_DIR_URL.'/assets/js/wp-cdnjs.js');
 			$translation_array = array(
@@ -394,9 +392,8 @@ if(!class_exists('WP_CDNJS')) :
 		 */
 		public function cdnjs_scripts() {
 
-
-//			var_dump($this->get_setting(WP_CDNJS_OPTIONS, 'settings', 'scripts'));
-//			die;
+			//			var_dump($this->get_setting(WP_CDNJS_OPTIONS, 'settings', 'scripts'));
+			//			die;
 
 			$enabled = $this->get_setting(WP_CDNJS_OPTIONS, 'settings', 'enable_scripts');
 
@@ -440,6 +437,7 @@ if(!class_exists('WP_CDNJS')) :
 			return substr(strrchr($file_name, '.'), 1);
 		}
 	}
+}
 
 endif;
 
